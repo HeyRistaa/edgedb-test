@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/biome/configuration_schema.json",
+  "files": {
+    "ignore": [
+      "**/generated",
+      "**/*.json",
+      "**/dist"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "correctness": {
+        "noUndeclaredVariables": "off"
+      },
+      "suspicious": {
+        "noEmptyInterface": "off"
+      }
+    }
+  }
+}

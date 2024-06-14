@@ -1,0 +1,88 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsPlusConfig": "./tsplus.config.json",
+    "lib": [
+      "esnext"
+    ],
+    // "tsPlusGlobalFiles": [
+    //     "./_src/_global.ts"
+    // ],
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "rootDir": "./_src",
+    // keep in here, cause madge can't detect it from extended tsconfig
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "~/*": [
+        "_src/*"
+      ],
+      "@fastify-effect-starter/main/*": [
+        "_src/*"
+      ],
+      "@trpc/server/internals": [
+        "./node_modules/@trpc/server/dist/internals.js"
+      ],
+      "@trpc/server/core/*": [
+        "./node_modules/@trpc/server/dist/core/*.js"
+      ],
+      "@trpc/server/error/formatter": [
+        "./node_modules/@trpc/server/dist/error/formatter.js"
+      ]
+    },
+    // "types": [
+    //   "./types/modules",
+    //   "node"
+    // ],
+    "outDir": "./dist",
+    "transformers": [
+      // Transform paths in output .js files
+      {
+        "name": "ts-transform-paths"
+      },
+      // Transform paths in output .d.ts files (Include this line if you output declarations files)
+      {
+        "name": "ts-transform-paths",
+        "position": "afterDeclaration"
+      },
+      {
+        "name": "@effect/language-service/transformer",
+        "trace": {
+          "exclude": [
+            "**/*.ts"
+          ]
+        }
+        //"debug": {}
+      }
+    ]
+  },
+  "include": [
+    "./_src/**/*.ts",
+    "./_src/**/*.mts",
+  ],
+  "exclude": [
+    "**/__template.ts",
+    "./dist",
+    "*.test.ts",
+    "node_modules",
+    "build",
+    "lib",
+    "dist",
+    "**/*.d.ts.map",
+    ".git",
+    ".data",
+    "**/.*",
+    "**/*.tmp"
+  ],
+  "ts-node": {
+    "files": true,
+    "require": [
+      "tsconfig-paths/register"
+    ]
+    // "compilerOptions": {
+    //   "module": "CommonJS"
+    // }
+  }
+}

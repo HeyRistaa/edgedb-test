@@ -1,0 +1,58 @@
+{
+  "Pipe Operator |": {
+    "prefix": "+p",
+    "body": [
+      "[\"|>\"]($1)"
+    ],
+    "description": "Pipe Operator"
+  },
+  // "Flow Operator": {
+  //   "prefix": "+f",
+  //   "body": [
+  //     "[\">>\"]($1)"
+  //   ],
+  //   "description": "Flow Operator"
+  // },
+  "Compose Operator": {
+    "prefix": "+c",
+    "body": [
+      "[\">>>\"]($1)"
+    ],
+    "description": "Compose Operator"
+  },
+  "Operators Import": {
+    "prefix": "op",
+    "body": [
+      "import \"@effect-app/core/operators\""
+    ],
+    "description": "Operators Import"
+  },
+  "Gen Function $": {
+    "prefix": "gen$",
+    "body": [
+      "function* ($) {\n\t$0\n}"
+    ],
+    "description": "Generator function with $ input"
+  },
+  "Gen Function $ (wrapped)": {
+    "prefix": "egen$",
+    "body": [
+      "Effect.gen(function* ($) {\n\t$0\n})"
+    ],
+    "description": "Generator function with $ input"
+  },
+  "Gen Yield $": {
+    "prefix": "yield$",
+    "body": [
+      "yield* $($0)"
+    ],
+    "description": "Yield generator calling $()"
+  },
+  "Gen Yield $ (const)": {
+    "prefix": "cyield$",
+    "body": [
+      "const $1 = yield* $($0)"
+    ],
+    "description": "Yield generator calling $()"
+  }
+}
